@@ -18,5 +18,5 @@ To create chrome extention you must need to write <b>manifest.json</b>
      <b>browser_action</b> : the process you want to do with that extention. like <b>default_icon</b> the extention icon, 
      <b>default_popup</b> the UI you want make for that extention which is html file.
   </li>
-   <li>We san easily include our own css, images, js, etc externally in the html file define in default_popup like i have inculed app.js in popup.html</li>
+   <li>We can easily include our own css, images, js, etc externally in the html file define in default_popup like i have inculed app.js in popup.html</li>
 </ul>
