@@ -20,3 +20,5 @@ To create chrome extention you must need to write <b>manifest.json</b>
   </li>
    <li>We can easily include our own css, images, js, etc externally in the html file define in default_popup like i have inculed app.js in popup.html</li>
 </ul>
+
+<a href='https://developer.chrome.com/extensions/getstarted'>follow this link to start building and loading extention in chrome browser</a>
