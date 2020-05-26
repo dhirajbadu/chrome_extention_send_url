@@ -22,3 +22,7 @@ To create chrome extention you must need to write <b>manifest.json</b>
 </ul>
 
 <a href='https://developer.chrome.com/extensions/getstarted'>follow this link to start building and loading extention in chrome browser</a>
+
+<h1>Demo</h1>
+<img src="https://github.com/dhirajbadu/chrome_extention_send_url/blob/master/images/demo_1.jpg" />
+<img src="https://github.com/dhirajbadu/chrome_extention_send_url/blob/master/images/demo_2.jpg" />
