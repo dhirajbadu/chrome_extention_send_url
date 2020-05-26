@@ -1,85 +1,173 @@
 <!DOCTYPE html>
 <html>
-  <head>
-     <script src="jquery.min.js"></script>
-     <script src="background.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    .button {
-border: none;
-color: white;
-padding: 15px 32px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-margin: 4px 2px;
-cursor: pointer;
+<head>
+ <script src="jquery.min.js"></script>
+ <script src="background.js"></script>
+ <script src="jquery-clockpicker.min.js"></script>
+ <link rel="stylesheet" href="jquery-clockpicker.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style>
+  .button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .hide{
+    display: none;
+  }
+
+  .show{
+    display: block;
+  }
+  .clockpickerIcon{
+    background-color: #e7e7e7; 
+    color: black; 
+  }
+.has-feedback {
+    position: relative;
 }
-.hide{
-display: none;
-}
-
-.show{
-display: block;
-}
-
-.button2 {background-color: #008CBA;} /* Blue */
-.button3 {background-color: #f44336;} /* Red */ 
-.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
-.button5 {background-color: #555555;} /* Black */
-      body {
-                width: 196px;
-  height: 50px;
-  background: rgb(185, 104, 104);
-            border-radius: 10px;
-      }
-
-      .alert {
-padding: 20px;
-
-color: white;
-margin-top: 5px;
-margin-bottom: 5px;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.success{
-
-background-color: #4CAF50;
+.form-group label {
+    color: white;
+    font-size: 14px;
+    font-style: bold;
 }
 
-.danger{
-background-color: #f44336;
+.pointer {cursor: pointer;}
+
+.form-control-feedback {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 40px;
+    height: 47px;
+    line-height: 45px;
+    text-align: center;
+    pointer-events: none;
+    font-size: 26px;
+    cursor: hand;
+}
+  .button1 {background-color: #4CAF50; font-size: 12px;} /* Green */
+  .button2 {background-color: #008CBA; font-size: 12px;} /* Blue */
+  .button3 {background-color: #f44336; font-size: 12px;} /* Red */
+  .button4 {background-color: #e7e7e7; color: black; font-size: 12px;} /* Gray */
+  .button5 {background-color: #555555; font-size: 12px;} /* Black */
+  body {
+    width: 300px;
+    height: 300px;
+    background: #3c8dbc;
+    border-color: #367fa9;
+    border-radius: 10px;
+  }
+
+  .alert {
+    padding: 20px;
+
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .success{
+
+    background-color: #4CAF50;
+  }
+
+  .danger{
+    background-color: #f44336;
+  }
+
+  .warning{
+    background-color: #ff9800;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .form-control {
+    display: block;
+    width:  92%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.closebtn {
-margin-left: 15px;
-color: white;
-font-weight: bold;
-float: right;
-font-size: 22px;
-line-height: 20px;
-cursor: pointer;
-transition: 0.3s;
+.t-5{
+  margin-top: 5px;
 }
+  .closebtn:hover {
+    color: black;
+  }
+</style>
+</head>
+<body>
+ <div class="container">
+   <div class="row">
 
-.closebtn:hover {
-color: black;
-}
-    </style>
-  </head>
-  <body>
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-         <button class="button button2 sendRequest">Send To Url &nbsp;<i class="fa fa-external-link-square"></i></button><br>
-         <div class="alert success hide" id="successMsg">
-          <span class="closebtn">&times;</span> 
-          <strong>Message!</strong> successfully send
-          </div>
-       </div>
-     </div>
-   </div>
-  </body>
-  <script src="app.js"></script>
+       <div class="col-md-6">
+
+     <div class="form-group clockpicker has-feedback ">
+      <label for="time">Start Time</label>
+      <input type="text" class="form-control t-5" id="time" value="09:00">
+      <span class="input-group-addon clockpickerIcon pointer t-5 form-control-feedback">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </span>
+    </div>
+
+
+     <div class="col-md-6">
+       <button class="button button5 sendRequest" id="sendRequest">Upload &nbsp;<i class="fa fa-refresh fa-spin hide" style="color:red"></i></button><br>
+       
+       <div class="alert success hide" id="successMsg">
+        <span class="closebtn">&times;</span> 
+        <strong>Message!</strong> video successfully uploaded
+      </div>
+
+      <div class="alert danger hide" id="errorMsg">
+        <span class="closebtn">&times;</span> 
+        <strong>Warning!</strong> Error occured
+      </div>
+
+      <div class="alert warning hide" id="invalidMsg">
+        <span class="closebtn">&times;</span> 
+        <strong>Warning!</strong> This is not a valid video
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</body>
+<script src="app.js"></script>
 </html>
